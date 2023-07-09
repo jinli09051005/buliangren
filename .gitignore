@@ -1,0 +1,12 @@
+
+# Binaries for programs and plugins
+bin
+testbin/*
+
+# editor and IDE paraphernalia
+.idea
+*.swp
+*.swo
+*~
+
+/vendor
