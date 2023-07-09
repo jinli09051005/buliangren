@@ -131,6 +131,8 @@ func (in *UpdateConfigList) GetListMeta() *metav1.ListMeta {
 
 // UpdateConfigStatus defines the observed state of UpdateConfig
 type UpdateConfigStatus struct {
+	LastUpdate      metav1.Time `json:"lastUpdate,omitempty"`
+	ReconcileCounts int32       `json:"reconcileCounts,omitempty"`
 }
 
 func (in UpdateConfigStatus) SubResourceName() string {

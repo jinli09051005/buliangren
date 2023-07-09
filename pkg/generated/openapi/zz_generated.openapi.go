@@ -233,8 +233,24 @@ func schema_pkg_apis_tiankuixing_v1_UpdateConfigStatus(ref common.ReferenceCallb
 			SchemaProps: spec.SchemaProps{
 				Description: "UpdateConfigStatus defines the observed state of UpdateConfig",
 				Type:        []string{"object"},
+				Properties: map[string]spec.Schema{
+					"lastUpdate": {
+						SchemaProps: spec.SchemaProps{
+							Default: map[string]interface{}{},
+							Ref:     ref("k8s.io/apimachinery/pkg/apis/meta/v1.Time"),
+						},
+					},
+					"reconcileCounts": {
+						SchemaProps: spec.SchemaProps{
+							Type:   []string{"integer"},
+							Format: "int32",
+						},
+					},
+				},
 			},
 		},
+		Dependencies: []string{
+			"k8s.io/apimachinery/pkg/apis/meta/v1.Time"},
 	}
 }
 
