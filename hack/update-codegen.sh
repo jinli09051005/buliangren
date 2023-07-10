@@ -15,7 +15,7 @@ bash "${CODEGEN_PKG}"/generate-groups.sh "deepcopy,client,lister,informer" \
 	--output-base "${GOPATH}/src" \
 	--go-header-file "${GOPATH}"/src/cangbinggu.io/buliangren/hack/boilerplate.go.txt
 
-GOPATH="${GOPATH}" bash "${CODEGEN_PKG}"/generate-internal-groups.sh "openapi" \
+GOPATH="${GOPATH}" bash "${CODEGEN_PKG}"/generate-internal-groups.sh "deepcopy,client,lister,informer,openapi" \
 	cangbinggu.io/buliangren/pkg/generated \
 	cangbinggu.io/buliangren/pkg/apis \
 	cangbinggu.io/buliangren/pkg/apis \
