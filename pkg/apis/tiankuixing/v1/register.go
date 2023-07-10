@@ -50,3 +50,9 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 	)
 	return nil
 }
+
+// Resource takes an unqualified resource and returns a LocalGroup qualified
+// GroupResource
+func Resource(resource string) schema.GroupResource {
+	return SchemeGroupVersion.WithResource(resource).GroupResource()
+}
