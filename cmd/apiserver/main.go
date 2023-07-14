@@ -17,19 +17,36 @@ limitations under the License.
 package main
 
 import (
-	"k8s.io/klog"
-	"sigs.k8s.io/apiserver-runtime/pkg/builder"
-
-	// +kubebuilder:scaffold:resource-imports
-	tiankuixingv1 "cangbinggu.io/buliangren/pkg/apis/tiankuixing/v1"
+	"cangbinggu.io/buliangren/cmd/apiserver/app"
+	"math/rand"
+	"os"
+	"runtime"
+	"time"
 )
 
 func main() {
-	err := builder.APIServer.
-		// +kubebuilder:scaffold:resource-register
-		WithResource(&tiankuixingv1.UpdateConfig{}).
-		Execute()
-	if err != nil {
-		klog.Fatal(err)
+	rand.Seed(time.Now().UTC().UnixNano())
+	if len(os.Getenv("GOMAXPROCS")) == 0 {
+		runtime.GOMAXPROCS(runtime.NumCPU())
 	}
+
+	app.NewApp("tiankuixing").Run()
 }
+
+//import (
+//	"k8s.io/klog"
+//	"sigs.k8s.io/apiserver-runtime/pkg/builder"
+//
+//	// +kubebuilder:scaffold:resource-imports
+//	externalapiv1 "cangbinggu.io/buliangren/pkg/apis/tiankuixing/v1"
+//)
+//
+//func main() {
+//	err := builder.APIServer.
+//		// +kubebuilder:scaffold:resource-register
+//		WithResource(&externalapiv1.updateconfig{}).
+//		Execute()
+//	if err != nil {
+//		klog.Fatal(err)
+//	}
+//}

@@ -1,7 +1,7 @@
 package v1
 
 var map_UpdateConfig = map[string]string{
-	"":         "UpdateConfig",
+	"":         "updateconfig",
 	"metadata": "Standard object's metadata.",
 }
 
@@ -18,7 +18,7 @@ func (UpdateConfigList) SwaggerDoc() map[string]string {
 }
 
 var map_UpdateConfigSpec = map[string]string{
-	"":               "UpdateConfigSpec defines the desired state of UpdateConfig",
+	"":               "UpdateConfigSpec defines the desired state of updateconfig",
 	"imageName":      "Image Name",
 	"configMapName":  "ConfigMap Name",
 	"deploymentName": "Deployment Name",
@@ -30,7 +30,7 @@ func (UpdateConfigSpec) SwaggerDoc() map[string]string {
 }
 
 var map_UpdateConfigStatus = map[string]string{
-	"": "UpdateConfigStatus defines the observed state of UpdateConfig",
+	"": "UpdateConfigStatus defines the observed state of updateconfig",
 }
 
 func (UpdateConfigStatus) SwaggerDoc() map[string]string {

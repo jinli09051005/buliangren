@@ -33,21 +33,21 @@ var SchemeGroupVersion = schema.GroupVersion{
 }
 
 var (
-	SchemeBuilder     runtime.SchemeBuilder
-	thisSchemeBuilder = &SchemeBuilder
-	AddToScheme       = thisSchemeBuilder.AddToScheme
+	SchemeBuilder      runtime.SchemeBuilder
+	localSchemeBuilder = &SchemeBuilder
+	AddToScheme        = localSchemeBuilder.AddToScheme
 )
 
 func init() {
-	thisSchemeBuilder.Register(addKnownTypes)
+	localSchemeBuilder.Register(addKnownTypes, addDefaultingFuncs)
 }
 
 func addKnownTypes(scheme *runtime.Scheme) error {
-	metav1.AddToGroupVersion(scheme, SchemeGroupVersion)
 	scheme.AddKnownTypes(SchemeGroupVersion,
 		&UpdateConfig{},
 		&UpdateConfigList{},
 	)
+	metav1.AddToGroupVersion(scheme, SchemeGroupVersion)
 	return nil
 }
 

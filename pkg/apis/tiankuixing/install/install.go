@@ -23,6 +23,10 @@ import (
 	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
 )
 
+func init() {
+	Install(tiankuixing.Scheme)
+}
+
 // Install registers the API group and adds types to a scheme
 func Install(scheme *runtime.Scheme) {
 	utilruntime.Must(tiankuixing.AddToScheme(scheme))

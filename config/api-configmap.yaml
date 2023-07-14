@@ -1,0 +1,26 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: tiankuixing-api
+  namespace: demo-apiserver
+data:
+  tiananxing.toml: |
+    [secure_serving]
+    tls_cert_file = "/apiserver.local.config/certificates/tiankuixing.crt"
+    tls_private_key_file = "/apiserver.local.config/certificates/tiankuixing.key"
+
+    [etcd]
+    servers = [
+      "http://etcd-svc:2379"
+    ]
+    cafile = "/app/certs/etcd-ca.crt"
+    certfile = "/app/certs/etcd.crt"
+    keyfile = "/app/certs/etcd.key"
+    
+    [generic]
+    external_hostname = "tiankuixing-api"
+    external_port = 443
+
+    [authentication]
+    token_auth_file = "/app/certs/token.csv"
+    client_ca_file = "/app/certs/ca.crt"

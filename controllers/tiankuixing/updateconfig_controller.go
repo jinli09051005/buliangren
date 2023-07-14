@@ -33,7 +33,7 @@ import (
 	appsv1 "k8s.io/api/apps/v1"
 )
 
-// UpdateConfigReconciler reconciles a UpdateConfig object
+// UpdateConfigReconciler reconciles a updateconfig object
 type UpdateConfigReconciler struct {
 	client.Client
 	Scheme *runtime.Scheme
@@ -46,7 +46,7 @@ type UpdateConfigReconciler struct {
 // Reconcile is part of the main kubernetes reconciliation loop which aims to
 // move the current state of the cluster closer to the desired state.
 // TODO(user): Modify the Reconcile function to compare the state specified by
-// the UpdateConfig object against the actual cluster state, and then
+// the updateconfig object against the actual cluster state, and then
 // perform operations to make the cluster state reflect the state specified by
 // the user.
 //

@@ -19,6 +19,7 @@ var SchemeGroupVersion = schema.GroupVersion{
 	Version: runtime.APIVersionInternal,
 }
 
+// Kind takes an unqualified kind and returns back a IdentityProvider qualified GroupKind
 func Kind(kind string) schema.GroupKind {
 	return SchemeGroupVersion.WithKind(kind).GroupKind()
 }
@@ -28,14 +29,9 @@ func Resource(resource string) schema.GroupResource {
 }
 
 var (
-	SchemeBuilder     runtime.SchemeBuilder
-	thisSchemeBuilder = &SchemeBuilder
-	AddToScheme       = thisSchemeBuilder.AddToScheme
+	SchemeBuilder = runtime.NewSchemeBuilder(addKnownTypes)
+	AddToScheme   = SchemeBuilder.AddToScheme
 )
-
-func init() {
-	thisSchemeBuilder.Register(addKnownTypes)
-}
 
 func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,

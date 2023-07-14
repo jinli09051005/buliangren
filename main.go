@@ -32,7 +32,6 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/log/zap"
 
 	tiankuixingcontrollers "cangbinggu.io/buliangren/controllers/tiankuixing"
-	tiankuixinginstall "cangbinggu.io/buliangren/pkg/apis/tiankuixing/install"
 	//+kubebuilder:scaffold:imports
 )
 
@@ -43,7 +42,7 @@ var (
 
 func init() {
 	utilruntime.Must(clientgoscheme.AddToScheme(scheme))
-	tiankuixinginstall.Install(scheme)
+	//tiankuixinginstall.Install(scheme)
 	//+kubebuilder:scaffold:scheme
 }
 
@@ -81,7 +80,7 @@ func main() {
 		Client: mgr.GetClient(),
 		Scheme: mgr.GetScheme(),
 	}).SetupWithManager(mgr); err != nil {
-		setupLog.Error(err, "unable to create controller", "controller", "UpdateConfig")
+		setupLog.Error(err, "unable to create controller", "controller", "updateconfig")
 		os.Exit(1)
 	}
 	//+kubebuilder:scaffold:builder
